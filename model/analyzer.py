@@ -24,7 +24,8 @@ def main():
     
     dataframe = pd.DataFrame.from_dict(data_dict)
     prediction_result = cls_import.predict(dataframe)
-    return prediction_result[0]
+    print(prediction_result[0])
+
     
 
 
