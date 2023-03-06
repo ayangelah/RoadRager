@@ -17,7 +17,7 @@ The user must drive cautiously in order not to be rated as aggressive. We hope t
 ## How we built it
 The frontend (game) is built using Unity and the C# language. It is a 2D game with endless sprites. The game simultaneously collects data on how the user is driving (such as the speed and how closely they are tailgating) as well as environmental data such as weather. This data is sent to a Google Cloud endpoint, where a python script puts it into the model and gets an aggression rating.
 
-The model was originally analyzed and trained locally. We had to integrate multiple tables of data and analyze features for importance. Finally, this involves training a logistic regression model and then saving is to a Pickle file. The Pickle file is used by the integration script on Google Cloud to do analysis of driving behavior. 
+The model was originally analyzed and trained locally. We had to integrate multiple tables of data and analyze features for importance. Finally, this involves training a logistic regression model and then saving is to a Pickle file. The Pickle file is used by the integration script on Google Cloud to do analysis of driving behavior. To gather the data for this project, we used an Aggressive Driving dataset by Veerala Krishna. The dataset is listed here: https://www.kaggle.com/datasets/veeralakrishna/aggressive-driving-data.
 
 Lastly, the Google Cloud Function is activated whenever Unity makes a call to the HTTP endpoint with the appropriate driving condition data. This endpoint is activated frequently and given the data from the Unity game.
 
