@@ -1,0 +1,6 @@
+# Function dependencies, for example:
+# package>=version
+scikit-learn==1.0.2
+pandas==1.5.3
+joblib>=1.1.1
+google-cloud-storage>=2.7.0
