@@ -1,8 +1,18 @@
+# supress any conda or numpy warnings
+import warnings
+warnings.filterwarnings("ignore")
+
+
 import sys
 import joblib
 import pandas as pd
-import pandas as pd
-import sklearn
+from sklearn.impute import SimpleImputer
+from sklearn.compose import ColumnTransformer
+from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import OneHotEncoder
+from sklearn.linear_model import LogisticRegression
+
 
 def main():
     cls_import = joblib.load('fd_prod_tr.pkl')
@@ -11,7 +21,7 @@ def main():
     data_dict = {}
 
     if (len(sys.argv) - 1 != len(column_list)):
-        return -1
+        print('-1')
     
     arguments = []
     for i in range(len(sys.argv)):
@@ -23,7 +33,7 @@ def main():
         data_dict[column_list[i]] = [arguments[i]]
     
     dataframe = pd.DataFrame.from_dict(data_dict)
-    prediction_result = cls_import.predict(dataframe)
+    prediction_result = cls_import.predict_proba(dataframe)
     print(prediction_result[0])
 
     
